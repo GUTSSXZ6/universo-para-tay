@@ -1,0 +1,242 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#05020b"><title>Um universo para Tay ♡</title><style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#030108;color:#fff;font-family:Georgia,'Times New Roman',serif;touch-action:none}#universe{display:block;width:100%;height:100%;touch-action:none}#vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 44%,transparent 35%,rgba(3,0,12,.48) 100%)}#introText{position:fixed;top:11%;width:100%;text-align:center;font-size:clamp(22px,6vw,34px);letter-spacing:.12em;text-shadow:0 0 22px #f25cdd;opacity:0;transition:opacity 2s;pointer-events:none}#introText span{color:#ff9fda}#hint{position:fixed;bottom:calc(28px + env(safe-area-inset-bottom));left:0;width:100%;text-align:center;font:11px system-ui,sans-serif;letter-spacing:.08em;color:#c8b6d9;opacity:0;transition:opacity 1.5s;pointer-events:none}#reset{position:fixed;right:16px;top:calc(16px + env(safe-area-inset-top));width:38px;height:38px;border:1px solid #a775a766;background:#150b21aa;color:#e8c4f4;border-radius:50%;font-size:25px;cursor:pointer;backdrop-filter:blur(6px)}#labels{position:fixed;inset:0;pointer-events:none;overflow:hidden}.star-label{position:absolute;transform:translate(-50%,-50%);font:11px Georgia,serif;white-space:nowrap;color:#e9c8f7;text-shadow:0 0 12px #b959da;opacity:0;transition:opacity .4s}#poemOverlay{position:fixed;inset:0;display:grid;place-items:center;background:#020009b8;backdrop-filter:blur(10px);padding:16px;opacity:1;transition:opacity .4s;touch-action:auto}#poemOverlay.hidden{opacity:0;pointer-events:none}.poem{position:relative;width:min(100%,520px);max-height:88dvh;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;border:1px solid #d995d45c;border-radius:20px;background:linear-gradient(145deg,#1a0b27f2,#080611f5);padding:30px 22px 24px;box-shadow:0 0 55px #ae3f9728;text-align:center;scrollbar-width:thin;scrollbar-color:#ad74ae transparent}.eyebrow{font:11px system-ui,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#d99bce}h1{font-weight:400;font-size:clamp(24px,6vw,32px);line-height:1.2;margin:16px 0 25px;color:#ffe2f5}.verses p{font-size:clamp(14px,3.65vw,17px);line-height:1.85;color:#f0e4f2;margin:0 0 23px}.verses .signature{color:#ffc4e8;font-style:italic;margin:34px 0 4px}#close{position:sticky;top:0;float:right;background:none;border:0;color:#ffd2ee;font-size:28px;cursor:pointer;z-index:2}
+
+#starMessage{position:fixed;inset:0;z-index:12;display:grid;place-items:center;padding:22px;background:rgba(3,1,12,.68);backdrop-filter:blur(9px);opacity:1;transition:opacity .35s;touch-action:auto}#starMessage.hidden{opacity:0;pointer-events:none}.star-message-card{position:relative;width:min(100%,390px);padding:38px 28px 32px;text-align:center;border:1px solid rgba(240,156,230,.48);border-radius:22px;background:linear-gradient(145deg,rgba(40,15,57,.97),rgba(9,6,22,.98));box-shadow:0 0 60px rgba(230,92,196,.2)}#starMessageTitle{font:normal 26px Georgia,serif;color:#ffd1f0;margin:12px 0 20px}#starMessageText{font:17px/1.8 Georgia,serif;color:#f5e5f5;white-space:pre-line}#starMessageClose{position:absolute;right:14px;top:10px;border:0;background:transparent;color:#ffd6ef;font-size:30px;cursor:pointer;padding:4px 10px}.star-label{cursor:pointer}
+/* Entrada musical e controles acessíveis */
+#track{position:fixed;top:calc(13px + env(safe-area-inset-top));left:66px;right:67px;z-index:10;display:flex;align-items:center;gap:9px;padding:5px 9px;border:1px solid #d48bc444;border-radius:12px;background:#12091bc9;backdrop-filter:blur(8px);font:11px system-ui,sans-serif;opacity:0;pointer-events:none;transition:opacity .6s}#track.active{opacity:1}#cover{height:30px;width:30px;flex-shrink:0;border-radius:7px;background:radial-gradient(circle at 35% 30%,#ffb0dc,#8b3a99 45%,#160920 78%);display:grid;place-items:center;color:#fff;font-size:17px}#track strong{display:block;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#track small{display:block;color:#d9b5d7;font-size:10px}#track .meta{min-width:0}#skip{position:fixed;bottom:calc(65px + env(safe-area-inset-bottom));right:16px;z-index:11;background:#180d26d9;color:#f5d8ed;border:1px solid #d995d477;border-radius:24px;padding:10px 14px;font:12px system-ui,sans-serif;cursor:pointer}#skip[hidden]{display:none}
+
+#musicGate{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:28px;text-align:center;background:radial-gradient(ellipse at 50% 43%,#271035 0%,#090411 56%,#030108 100%);transition:opacity 1.2s ease,visibility 1.2s ease;touch-action:manipulation}
+#musicGate.gone{opacity:0;visibility:hidden;pointer-events:none}
+#musicGate h2{font-weight:400;font-size:clamp(27px,7vw,40px);line-height:1.3;color:#ffe1f5;text-shadow:0 0 25px #c74fae;margin:0}
+#musicGate p{font:13px/1.7 system-ui,sans-serif;color:#d8bedf;max-width:290px;margin:0}
+#enterUniverse{border:1px solid #e8a4d2aa;border-radius:100px;padding:15px 28px;background:linear-gradient(120deg,#7c2b72,#a74a9a);color:#fff;font:15px system-ui,sans-serif;box-shadow:0 0 30px #b949a655;cursor:pointer;min-height:48px}
+#musicToggle{position:fixed;top:calc(16px + env(safe-area-inset-top));left:16px;z-index:10;width:40px;height:40px;border:1px solid #a775a766;background:#150b21cc;color:#f7d9ef;border-radius:50%;font-size:19px;cursor:pointer;backdrop-filter:blur(6px)}
+#musicToggle[hidden]{display:none}
+#musicStatus{position:fixed;left:50%;bottom:calc(64px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:11;max-width:90vw;text-align:center;font:12px system-ui,sans-serif;color:#f6d5ed;text-shadow:0 0 8px #100519;pointer-events:none;opacity:0;transition:opacity .3s}
+#musicStatus.show{opacity:1}
+/* Nebulosa cinematográfica: camadas CSS sem filtros de blur pesados */
+#cosmicMist{position:fixed;inset:-22%;z-index:2;pointer-events:none;opacity:0;transform:scale(.7);will-change:transform,opacity;background:radial-gradient(ellipse 42% 33% at 34% 40%,rgba(245,83,180,.50),transparent 78%),radial-gradient(ellipse 39% 38% at 69% 57%,rgba(111,54,205,.60),transparent 80%),radial-gradient(ellipse 30% 43% at 52% 30%,rgba(180,102,244,.36),transparent 80%),radial-gradient(ellipse 45% 25% at 45% 76%,rgba(104,46,179,.37),transparent 80%);mix-blend-mode:screen}
+#cosmicFlash{position:fixed;inset:0;z-index:4;pointer-events:none;background:radial-gradient(circle at 50% 47%,#fff 0%,#ffe2fa 24%,#a95cd7 62%,transparent 100%);opacity:0;will-change:opacity}
+@media(prefers-reduced-motion:reduce){#cosmicMist{will-change:auto}}
+#replayIntro{position:fixed;right:16px;top:calc(63px + env(safe-area-inset-top));z-index:12;border:1px solid #d995d477;border-radius:22px;padding:9px 12px;background:#160b24cc;color:#ffe0f4;font:12px system-ui,sans-serif;cursor:pointer;backdrop-filter:blur(6px)}#replayIntro:focus-visible{outline:2px solid #ff9cdb;outline-offset:3px}
+</style></head><body><div id="musicGate" role="dialog" aria-modal="true" aria-label="Entrar no universo"><h2>Entre no meu universo, Tay ♡</h2><p>Um pedacinho do infinito, feito especialmente para você.</p><button id="enterUniverse" type="button">Entrar no universo ✧</button><p>Toque para começar a experiência com música.</p></div><button id="musicToggle" type="button" aria-label="Silenciar música" title="Silenciar música" hidden>♫</button><div id="track"><div id="cover">♫</div><div class="meta"><strong>Die With a Smile</strong><small>Lady Gaga &amp; Bruno Mars</small></div></div><button id="skip" type="button" hidden>Pular introdução ›</button><div id="musicStatus" role="status" aria-live="polite"></div><audio id="universeMusic" src="musica.mp3" preload="none" loop playsinline></audio><canvas id="universe" aria-label="Universo tridimensional interativo"></canvas><div id="cosmicMist" aria-hidden="true"></div><div id="cosmicFlash" aria-hidden="true"></div><div id="vignette"></div><div id="introText">Um universo para Tay <span>♡</span></div><div id="hint">Arraste para explorar · Toque no coração</div><button id="reset" aria-label="Voltar à visão inicial">↺</button><button id="replayIntro" type="button" aria-label="Rever introdução" title="Rever introdução">⟲ <span>Rever</span></button><div id="labels"></div><div id="poemOverlay" class="hidden" role="dialog" aria-modal="true" aria-labelledby="poemTitle"><div class="poem"><button id="close" aria-label="Fechar">×</button><div class="eyebrow">Para Tay ♡</div><h1 id="poemTitle">O universo nos seus detalhes</h1><div class="verses"><p>Há um universo nos seus cachos,<br>nessas curvas que o vento vem desenhar;<br>como estrelas seguindo seus próprios caminhos,<br>livres, bonitas, sem precisar se explicar.</p><p>Há uma luz diferente no seu sorriso,<br>dessas que não pedem licença para chegar;<br>e quando ele aparece de repente,<br>até um dia comum encontra outro lugar.</p><p>Mas o que me encanta vai muito além<br>do que os meus olhos conseguem perceber:<br>é sua inteligência, seu jeito de pensar,<br>as coisas que aprendo ao ouvir você.</p><p>E tem esse cuidado tão seu, tão sincero,<br>quando pergunta como foi meu dia,<br>quando se preocupa, mesmo nas coisas pequenas,<br>e faz da atenção uma forma de companhia.</p><p>Não quero apressar o tempo, nem o destino,<br>nem dar nome ao que ainda vamos descobrir.<br>Só quero dizer, com carinho e sem pressa:<br>tem sido muito bonito conhecer você por aqui.</p><p class="signature">Para Tayane Rayssa Durães dos Santos. ♡</p></div></div></div><div id="starMessage" class="hidden" role="dialog" aria-modal="true" aria-labelledby="starMessageTitle"><div class="star-message-card"><button id="starMessageClose" aria-label="Fechar mensagem">×</button><div class="eyebrow">Uma estrela para você ✧</div><h2 id="starMessageTitle"></h2><div id="starMessageText"></div></div></div><script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
+
+// --- utils.js ---
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));const ease=x=>x*x*(3-2*x);
+function particles(count,fn){const positions=new Float32Array(count*3),colors=new Float32Array(count*3),sizes=new Float32Array(count),seeds=new Float32Array(count);for(let i=0;i<count;i++){const p=fn(i,count);positions.set(p.pos,i*3);colors.set(p.color,i*3);sizes[i]=p.size;seeds[i]=Math.random()}const geo=new (window.__THREE_BUFFER__||Object)();return {positions,colors,sizes,seeds}}
+
+
+// --- performance.js ---
+function quality(){const low=(navigator.hardwareConcurrency||4)<=6||(navigator.deviceMemory||4)<=4;const veryLow=(navigator.deviceMemory||4)<=2;return {galaxy:veryLow?7500:low?15000:30000,accretion:veryLow?1000:low?2000:4300,heart:veryLow?1800:low?3200:5800,pixelRatio:Math.min(devicePixelRatio||1,veryLow?0.85:low?1:1.35)}}
+function frameBudget(){let prev=0;return {sample(now){if(!prev){prev=now;return null}const fps=1000/((now-prev)/40);prev=now;return fps}}}
+
+
+// --- particles.js ---
+
+function makePoints(count,fill,options={}){const p=new Float32Array(count*3),c=new Float32Array(count*3),s=new Float32Array(count),seed=new Float32Array(count);for(let i=0;i<count;i++){const v=fill(i,count);p.set(v.p,i*3);c.set(v.c,i*3);s[i]=v.s;seed[i]=Math.random()};const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(p,3));geo.setAttribute('aColor',new THREE.BufferAttribute(c,3));geo.setAttribute('aSize',new THREE.BufferAttribute(s,1));geo.setAttribute('aSeed',new THREE.BufferAttribute(seed,1));const mat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,uniforms:{uTime:{value:0},uReveal:{value:0},uSize:{value:options.size||1},uMode:{value:options.mode||0}},vertexShader:`attribute vec3 aColor;attribute float aSize;attribute float aSeed;varying vec3 vColor;varying float vSeed;uniform float uTime;uniform float uReveal;uniform float uSize;uniform float uMode;void main(){vColor=aColor;vSeed=aSeed;vec3 pos=position;float r=length(pos.xz);if(uMode<0.5){float angle=uTime*(0.007+0.014/(1.+r*.06));float co=cos(angle),si=sin(angle);pos.xz=mat2(co,-si,si,co)*pos.xz;pos.xz*=max(.003,uReveal);}else if(uMode<1.5){float angle=uTime*(.12/(1.+r*.06));pos.xz=mat2(cos(angle),-sin(angle),sin(angle),cos(angle))*pos.xz;pos*=max(.003,uReveal);}else{pos+=normalize(pos+vec3(.001))*.11*sin(uTime*1.8+aSeed*6.28);pos=mix(vec3(0.,18.,0.)+vec3(sin(aSeed*63.),cos(aSeed*82.),sin(aSeed*49.))*14.,pos,uReveal);}vec4 mv=modelViewMatrix*vec4(pos,1.);gl_Position=projectionMatrix*mv;gl_PointSize=min(26.,aSize*uSize*(210./max(3.,-mv.z))*(.82+.18*sin(uTime*1.8+aSeed*20.)));gl_PointSize=max(1.,gl_PointSize);}`,fragmentShader:`varying vec3 vColor;varying float vSeed;uniform float uReveal;void main(){vec2 uv=gl_PointCoord-.5;float r=length(uv);float core=exp(-r*r*65.);float halo=exp(-r*r*13.)*.34;float a=(core+halo)*smoothstep(.5,.08,r)*uReveal;if(a<.008)discard;gl_FragColor=vec4(vColor*(1.1+core*.5),a);}`});return {points:new THREE.Points(geo,mat),material:mat}}
+
+
+// --- galaxy.js ---
+
+const palette=[new THREE.Color('#ff77c8'),new THREE.Color('#ec4ab7'),new THREE.Color('#b77dff'),new THREE.Color('#f4ddff'),new THREE.Color('#8058cf')];
+function createGalaxy(count){const group=new THREE.Group();const {points,material}=makePoints(count,()=>{const arm=Math.floor(Math.random()*5),r=4+Math.pow(Math.random(),.72)*89,theta=arm*Math.PI*2/5+r*.105+(Math.random()-.5)*(.18+r*.013);const spread=(Math.random()-.5)*(2+r*.08);const x=Math.cos(theta)*r+Math.cos(theta+Math.PI/2)*spread,z=Math.sin(theta)*r+Math.sin(theta+Math.PI/2)*spread,y=(Math.random()-.5)*(1.5+r*.045);const col=palette[Math.floor(Math.random()*palette.length)].clone();col.lerp(new THREE.Color('#fff0ff'),Math.random()*.35);return {p:[x,y,z],c:col.toArray(),s:Math.random()<.035?2.6+Math.random()*2:0.6+Math.random()*1.4}},{mode:0,size:1.3});group.add(points);const distant=makePoints(Math.max(800,Math.floor(count*.075)),()=>{const r=100+Math.random()*120,a=Math.random()*Math.PI*2,v=(Math.random()-.5)*2;return {p:[Math.cos(a)*r,Math.sin(v)*r*.7,Math.sin(a)*r],c:[.58+Math.random()*.3,.5+Math.random()*.3,.8+Math.random()*.2],s:.5+Math.random()*1.4}},{mode:3,size:1});distant.material.uniforms.uReveal.value=1;group.add(distant.points);return {group,material}}
+
+
+// --- blackhole.js ---
+
+function createBlackHole(count){const group=new THREE.Group();const core=new THREE.Mesh(new THREE.SphereGeometry(2.5,24,16),new THREE.MeshBasicMaterial({color:0x010005}));group.add(core);const ring=new THREE.Mesh(new THREE.RingGeometry(2.65,3.05,96),new THREE.MeshBasicMaterial({color:0xf271d9,transparent:true,opacity:.55,side:THREE.DoubleSide,depthWrite:false}));ring.rotation.x=Math.PI/2;group.add(ring);const {points,material}=makePoints(count,()=>{const r=3.3+Math.pow(Math.random(),1.8)*13,a=Math.random()*Math.PI*2;const c=new THREE.Color().setHSL(.79+Math.random()*.15,.8,.55+Math.random()*.3);return {p:[Math.cos(a)*r,(Math.random()-.5)*(.25+r*.045),Math.sin(a)*r],c:c.toArray(),s:.65+Math.random()*1.6}},{mode:1,size:1.5});group.add(points);return {group,material}}
+
+
+// --- heart.js ---
+
+function createHeart(count){
+ const group=new THREE.Group();group.position.set(0,17,0);
+ const palette=['#ff69bd','#ffb5e2','#bc83f5','#fff1fc','#ec52b7'].map(c=>new THREE.Color(c));
+ // Heart boundary parameterization with filled interior and a rounded 3D cross-section.
+ // All points share a single BufferGeometry and GPU draw call.
+ const {points,material}=makePoints(count,(i)=>{
+   const t=Math.random()*Math.PI*2;
+   const bx=16*Math.pow(Math.sin(t),3)*.57;
+   const by=(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))*.57;
+   const edge=Math.random()<.47;
+   const shell=edge?.91+Math.random()*.09:Math.sqrt(Math.random())*.90;
+   const x=bx*shell,y=by*shell;
+   const depthRadius=3.8*Math.sqrt(Math.max(.08,1-shell*shell));
+   const z=(Math.random()*2-1)*(edge?2.7:depthRadius+1.4);
+   const col=palette[Math.floor(Math.random()*palette.length)].clone();
+   if(edge)col.lerp(new THREE.Color('#fff2fc'),.24);
+   return {p:[x,y,z],c:col.toArray(),s:edge?1.55+Math.random()*1.7:.7+Math.random()*1.35};
+ },{mode:2,size:1.55});
+ // Dedicated shader: spiral nebula coalesces into a stable, breathing 3D heart.
+ // uReveal controls formation; uTime drives low-amplitude motion without rebuilding geometry.
+ material.vertexShader=material.vertexShader.replace(
+  'pos+=normalize(pos+vec3(.001))*.11*sin(uTime*1.8+aSeed*6.28);pos=mix(vec3(0.,18.,0.)+vec3(sin(aSeed*63.),cos(aSeed*82.),sin(aSeed*49.))*14.,pos,uReveal);',
+  `float phase=aSeed*6.28318;
+   float spin=uTime*(.37+.25*aSeed)+phase;
+   float radius=1.5+12.*aSeed;
+   vec3 nebula=vec3(cos(spin)*radius, sin(spin*1.2)*3.8, sin(spin)*radius*.55);
+   float f=smoothstep(0.,1.,uReveal);
+   float settle=f*f*(3.-2.*f);
+   vec3 target=pos;
+   float breathe=1.+.012*sin(uTime*1.7);
+   target.xy*=breathe;
+   target.z+=.14*sin(uTime*.75+phase);
+   target.xy+=vec2(cos(uTime*.45+phase),sin(uTime*.45+phase))*(1.-aSeed)*.11;
+   pos=mix(nebula,target,settle);`
+ );
+ material.needsUpdate=true;
+ group.add(points);
+ const hitSphere=new THREE.Object3D();group.add(hitSphere);
+ return {group,material,hitSphere,hitRadius:12};
+}
+
+
+// --- controls.js ---
+
+function createControls(canvas,camera){let theta=.32,phi=.93,dist=125,targetTheta=theta,targetPhi=phi,targetDist=dist;const center=new THREE.Vector3(0,4,0),pointers=new Map();let pinch=0;const state={focus:false,reset(){targetTheta=.32;targetPhi=.93;targetDist=125},resize(){}};canvas.addEventListener('pointerdown',e=>{pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});canvas.setPointerCapture(e.pointerId);pinch=0});canvas.addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;const old=pointers.get(e.pointerId);if(pointers.size===1){targetTheta-=(e.clientX-old.x)*.005;targetPhi=clamp(targetPhi+(e.clientY-old.y)*.004,.25,1.48)}pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===2){const a=[...pointers.values()];const d=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);if(pinch)targetDist=clamp(targetDist*pinch/d,48,190);pinch=d}});for(const ev of ['pointerup','pointercancel'])canvas.addEventListener(ev,e=>{pointers.delete(e.pointerId);pinch=0});canvas.addEventListener('wheel',e=>{targetDist=clamp(targetDist+e.deltaY*.08,48,190)},{passive:true});state.update=(dt,t)=>{const entry=ease(clamp(t/8.2,0,1));theta+=(targetTheta-theta)*Math.min(1,dt*3);phi+=(targetPhi-phi)*Math.min(1,dt*3);dist+=(targetDist-dist)*Math.min(1,dt*3);const r=235*(1-entry)+dist*entry;const focus=state.focus?new THREE.Vector3(0,12,0):center;camera.position.set(Math.sin(theta)*Math.sin(phi)*r,Math.cos(phi)*r+focus.y,Math.cos(theta)*Math.sin(phi)*r);camera.lookAt(focus)};return state}
+
+
+// --- messages.js ---
+
+function createLabels(camera,container){
+ const messages=[
+  ['Seus cachos','Há um universo nos seus cachos, nessas curvas que o vento vem desenhar. Cada volta parece guardar uma estrela que só existe em você.'],
+  ['Seu sorriso','Há uma luz diferente no seu sorriso. Quando ele aparece de repente, até um dia comum encontra outro lugar.'],
+  ['Sua inteligência','O que me encanta vai além do que meus olhos conseguem perceber: seu jeito de pensar e tudo o que aprendo ao ouvir você.'],
+  ['Seu cuidado','Seu cuidado aparece nas coisas pequenas: quando pergunta como foi meu dia e transforma atenção em companhia.'],
+  ['Seu jeitinho','Gosto desse seu jeito tão seu, das pequenas coisas que tornam cada conversa uma descoberta bonita.'],
+  ['Minha estrelinha','Entre tantas estrelas deste universo, há uma que eu gosto especialmente de conhecer, sem pressa e com carinho: você, Tay. ♡']
+ ];
+ const panel=document.getElementById('starMessage'),title=document.getElementById('starMessageTitle'),body=document.getElementById('starMessageText');
+ const close=()=>panel.classList.add('hidden');
+ document.getElementById('starMessageClose').addEventListener('click',close);
+ panel.addEventListener('click',e=>{if(e.target===panel)close()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+ const spots=messages.map(([name,message],i)=>{const el=document.createElement('div');el.className='star-label';el.textContent=name;container.appendChild(el);const a=i*Math.PI*2/messages.length+.35,r=34+(i%3)*12;return {el,p:new THREE.Vector3(Math.cos(a)*r,2+i%3*2,Math.sin(a)*r),name,message,visible:false}});
+ return {update(t){for(const s of spots){const v=s.p.clone().project(camera);s.visible=t>9&&v.z>-1&&v.z<1&&Math.abs(v.x)<.9&&Math.abs(v.y)<.8;s.el.style.left=(v.x*.5+.5)*100+'%';s.el.style.top=(-v.y*.5+.5)*100+'%';s.el.style.opacity=s.visible?.62:0}},tap(x,y){for(const s of spots){if(!s.visible)continue;const b=s.el.getBoundingClientRect();if(x>b.left-20&&x<b.right+20&&y>b.top-20&&y<b.bottom+20){title.textContent=s.name;body.textContent=s.message;panel.classList.remove('hidden');return true}}return false}};
+}
+
+
+// --- main.js ---
+
+
+
+
+
+
+
+
+const canvas=document.getElementById('universe');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:false,alpha:false,powerPreference:'low-power'});
+renderer.setClearColor(0x030108);renderer.outputColorSpace=THREE.SRGBColorSpace;
+let settings=quality();renderer.setPixelRatio(settings.pixelRatio);renderer.setSize(innerWidth,innerHeight);
+const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0x030108,.009);
+const camera=new THREE.PerspectiveCamera(53,innerWidth/innerHeight,.1,400);
+const universe=new THREE.Group();scene.add(universe);
+const galaxy=createGalaxy(settings.galaxy);universe.add(galaxy.group);
+const blackhole=createBlackHole(settings.accretion);universe.add(blackhole.group);
+const heart=createHeart(settings.heart);universe.add(heart.group);
+const controls=createControls(canvas,camera);
+const labels=createLabels(camera,document.getElementById('labels'));
+const overlay=document.getElementById('poemOverlay');const hint=document.getElementById('hint');const title=document.getElementById('introText');
+let start=0,last=0,visible=true,paused=true,frames=0,slow=0,skipIntro=false;
+const ray=new THREE.Raycaster();ray.params.Points.threshold=1.6;
+const pointer=new THREE.Vector2();let down=null;
+canvas.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY,t:performance.now()}});
+canvas.addEventListener('pointerup',e=>{if(!down||Math.hypot(e.clientX-down.x,e.clientY-down.y)>14||performance.now()-down.t>650)return;pointer.set(e.clientX/innerWidth*2-1,-e.clientY/innerHeight*2+1);ray.setFromCamera(pointer,camera);const center=heart.hitSphere.getWorldPosition(new THREE.Vector3());const d=ray.ray.distanceToPoint(center);if(!labels.tap(e.clientX,e.clientY)&&d<heart.hitRadius*1.25&&heart.group.visible)openPoem();down=null});
+function openPoem(){overlay.classList.remove('hidden');controls.focus=true;hint.style.opacity=0}
+function closePoem(){overlay.classList.add('hidden');controls.focus=false;hint.style.opacity=1}
+document.getElementById('close').onclick=closePoem;overlay.addEventListener('click',e=>{if(e.target===overlay)closePoem()});document.getElementById('reset').onclick=()=>{closePoem();controls.reset()};
+function resize(){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);controls.resize()}
+addEventListener('resize',resize);document.addEventListener('visibilitychange',()=>{paused=document.hidden||!experienceStarted;if(!paused){last=performance.now();requestAnimationFrame(animate)}else{music.pause()}updateMusicButton()});
+canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();paused=true;hint.textContent='Restaurando o universo…';hint.style.opacity=1});canvas.addEventListener('webglcontextrestored',()=>location.reload());
+const budget=frameBudget();
+const skipButton=document.getElementById('skip');
+const track=document.getElementById('track');
+// Sequência guiada pelo tempo do áudio, e não pelo relógio do dispositivo.
+// Os marcos podem ser refinados após testes de escuta no aparelho.
+// Marcos provisórios: explosão na entrada vocal (~12 s), coração no primeiro refrão (~55 s).
+// A música controla o relógio, então pausas não deslocam a sequência.
+const timeline={star:0,burst:12,nebula:13,travel:21,spiral:31,blackhole:40,heart:48,complete:61};
+const smooth=(a,b,x)=>ease(clamp((x-a)/(b-a),0,1));
+const novaGeo=new THREE.SphereGeometry(1,20,12);
+const novaMat=new THREE.MeshBasicMaterial({color:0xffb2e7,transparent:true,opacity:0,depthWrite:false});
+const nova=new THREE.Mesh(novaGeo,novaMat);nova.position.set(0,3,0);scene.add(nova);
+const cosmicMist=document.getElementById('cosmicMist');
+const cosmicFlash=document.getElementById('cosmicFlash');
+// Partículas da nebulosa distribuídas em volume, não uma segunda galáxia completa.
+const cloud=makePoints(Math.min(2300,Math.floor(settings.galaxy*.14)),()=>{
+ const a=Math.random()*Math.PI*2,v=Math.acos(2*Math.random()-1),r=8+Math.pow(Math.random(),.65)*53;
+ const col=new THREE.Color(['#f782d8','#a875ff','#ee4bb4','#f7d9ff'][Math.floor(Math.random()*4)]);
+ return {p:[Math.sin(v)*Math.cos(a)*r,Math.cos(v)*r*.55,Math.sin(v)*Math.sin(a)*r],c:col.toArray(),s:1.1+Math.random()*2.7};
+},{mode:0,size:2.2});
+const cloudGroup=new THREE.Group();cloudGroup.add(cloud.points);universe.add(cloudGroup);
+function updateIntro(t){
+ const done=skipIntro||t>=timeline.complete;
+ const galaxyReveal=done?1:smooth(timeline.spiral-3,timeline.spiral+18,t);
+ galaxy.material.uniforms.uReveal.value=galaxyReveal;
+ blackhole.material.uniforms.uReveal.value=done?1:smooth(timeline.blackhole,timeline.blackhole+9,t);
+ // A pequena nebulosa de partículas se condensa gradualmente no coração.
+ heart.material.uniforms.uReveal.value=done?1:smooth(timeline.heart,timeline.complete,t);
+ const starVisible=done?0:smooth(0,3,t)*(1-smooth(timeline.burst,timeline.burst+.8,t));
+ nova.visible=!done&&starVisible>.001;
+ novaMat.opacity=starVisible*.95;
+ const pulse=1+Math.sin(t*2.8)*.08;
+ nova.scale.setScalar((1+smooth(timeline.burst-1.7,timeline.burst+.5,t)*7)*pulse);
+ const flash=done?0:Math.max(0,1-Math.abs(t-timeline.burst)/1.05);
+ cosmicFlash.style.opacity=String(Math.min(.88,flash*.88));
+ const mistIn=smooth(timeline.nebula,timeline.nebula+5,t);
+ const mistOut=1-smooth(timeline.spiral,timeline.spiral+15,t);
+ const mist=done?0:mistIn*mistOut;
+ cosmicMist.style.opacity=String(mist*.95);
+ // Travessia visual: a nebulosa se aproxima e passa pela câmera.
+ const travel=smooth(timeline.travel,timeline.spiral+13,t);
+ cosmicMist.style.transform=`scale(${(.72+travel*2.5).toFixed(3)}) translate3d(${(-travel*5).toFixed(2)}%,${(travel*4).toFixed(2)}%,0)`;
+ cloud.material.uniforms.uReveal.value=done?0:mist;
+ cloud.material.uniforms.uTime.value=t;
+ cloudGroup.scale.setScalar(.25+travel*2.1);
+ cloudGroup.rotation.y=t*.017;
+ skipButton.hidden=done;
+ if(done){nova.visible=false;cosmicFlash.style.opacity='0';cosmicMist.style.opacity='0'}
+}
+skipButton.onclick=()=>{skipIntro=true;updateIntro(timeline.complete);showMusicStatus('Introdução pulada · explore o universo ♡')};
+document.getElementById('replayIntro').onclick=async()=>{
+ if(!experienceStarted)return;
+ closePoem();
+ document.getElementById('starMessage').classList.add('hidden');
+ controls.reset();skipIntro=false;
+ title.style.opacity=0;hint.style.opacity=0;
+ if(audioReady){
+   try{music.currentTime=0;if(musicEnabled&&music.paused)await music.play()}catch(e){showMusicStatus('Não foi possível reiniciar o áudio')}
+ }else{start=performance.now()}
+ updateIntro(0);
+ showMusicStatus('Reproduzindo a introdução novamente ♡');
+};
+function animate(now){if(paused)return;requestAnimationFrame(animate);const dt=Math.min((now-last)/1000,.05);last=now;if(!visible)return;const t=audioReady?music.currentTime:(skipIntro?timeline.complete:(now-start)/1000);
+updateIntro(t);
+galaxy.group.rotation.y+=dt*.024;blackhole.group.rotation.y+=dt*.08;heart.group.rotation.y=Math.sin(t*.33)*.16;heart.material.uniforms.uTime.value=t;galaxy.material.uniforms.uTime.value=t;blackhole.material.uniforms.uTime.value=t;
+controls.update(dt,t);labels.update(timeline.complete>t&&!skipIntro?0:t);renderer.render(scene,camera);
+if(t>timeline.complete||skipIntro){title.style.opacity=1;hint.style.opacity=overlay.classList.contains('hidden')?1:0}
+if(t>10&&frames++%40===0){const fps=budget.sample(now);if(fps&&fps<26){slow++;if(slow>=3&&renderer.getPixelRatio()>0.75){renderer.setPixelRatio(Math.max(.75,renderer.getPixelRatio()-.2));renderer.setSize(innerWidth,innerHeight);slow=0}}else slow=Math.max(0,slow-1)}
+}
+// A música é opcional: sem musica.mp3, o universo continua funcionando normalmente.
+const music=document.getElementById('universeMusic');
+const musicToggle=document.getElementById('musicToggle');
+const gate=document.getElementById('musicGate');
+const musicStatus=document.getElementById('musicStatus');
+let experienceStarted=false, musicEnabled=true, audioReady=false, fadeFrame=0, statusTimeout=0;
+function showMusicStatus(message){musicStatus.textContent=message;musicStatus.classList.add('show');clearTimeout(statusTimeout);statusTimeout=setTimeout(()=>musicStatus.classList.remove('show'),3500)}
+function updateMusicButton(){musicToggle.textContent=musicEnabled&&audioReady&&!music.paused?'♫':'♪̸';musicToggle.setAttribute('aria-label',musicEnabled&&!music.paused?'Silenciar música':'Ativar música');musicToggle.title=musicToggle.getAttribute('aria-label')}
+function fadeInMusic(){cancelAnimationFrame(fadeFrame);music.volume=0;const began=performance.now();function fade(now){if(music.paused||!musicEnabled)return;music.volume=Math.min(.48,(now-began)/3500*.48);if(music.volume<.48)fadeFrame=requestAnimationFrame(fade)}fadeFrame=requestAnimationFrame(fade)}
+async function playMusic(){if(!musicEnabled)return;try{await music.play();audioReady=true;fadeInMusic()}catch(err){audioReady=false;showMusicStatus('Música indisponível. Adicione musica.mp3 ao repositório.')}updateMusicButton()}
+document.getElementById('enterUniverse').addEventListener('click',()=>{
+ if(experienceStarted)return;
+ experienceStarted=true;start=performance.now();last=start;paused=false;
+ gate.classList.add('gone');musicToggle.hidden=false;track.classList.add('active');skipButton.hidden=false;
+ requestAnimationFrame(animate);
+ playMusic();
+});
+musicToggle.addEventListener('click',()=>{musicEnabled=!musicEnabled;if(musicEnabled)playMusic();else{cancelAnimationFrame(fadeFrame);music.pause()}updateMusicButton()});
+music.addEventListener('error',()=>{audioReady=false;updateMusicButton();if(experienceStarted&&musicEnabled)showMusicStatus('Para ouvir música, envie musica.mp3 junto do index.html.')});
+</script></body></html>
