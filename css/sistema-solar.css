@@ -1,0 +1,109 @@
+/* Universo para Tayane 3.0 — interface do sistema solar */
+:root{color-scheme:dark;--space:#050711;--ink:#f5f0ff;--muted:#c4bbd4;--gold:#e9c98c;--line:#ffffff26;--panel:#111321;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%;background:var(--space)}
+body{margin:0;min-height:100%;overflow:hidden;background:var(--space);color:var(--ink);font:16px/1.5 system-ui,sans-serif}
+[hidden]{display:none!important}
+#scene{position:fixed;inset:0;touch-action:none;overflow:hidden}
+#scene canvas{display:block;width:100%;height:100%;outline:none}
+body>header{position:fixed;z-index:10;top:0;left:0;right:0;padding:calc(12px + var(--safe-top)) max(14px,env(safe-area-inset-right)) 12px max(14px,env(safe-area-inset-left));display:flex;align-items:center;justify-content:space-between;gap:10px;pointer-events:none}
+body>header>*{pointer-events:auto}
+button,.control{display:inline-flex;align-items:center;justify-content:center;min-height:44px;gap:8px;padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:#151625e8;color:var(--ink);font:inherit;font-size:14px;text-decoration:none;cursor:pointer;transition:background .2s,border-color .2s,transform .2s;-webkit-tap-highlight-color:transparent}
+button:focus-visible,.control:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+button:disabled{opacity:.45;cursor:default}
+button:active:not(:disabled),.control:active{transform:scale(.97)}
+@media(hover:hover){button:hover:not(:disabled),.control:hover{background:#25263b;border-color:var(--gold)}}
+#music-toggle[aria-pressed=true]{color:var(--gold);border-color:#e9c98c70}
+#loading{position:fixed;z-index:5;inset:0;display:grid;place-content:center;text-align:center;padding:28px;background:radial-gradient(ellipse at center,#171327 0%,var(--space) 65%);pointer-events:none}
+#loading>div{max-width:460px}
+#loading>div>p:first-child,#chapter-number{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600}
+#loading h1{font:400 clamp(30px,7vw,52px)/1.15 Georgia,serif;margin:12px 0;color:var(--ink)}
+#loading-status{font-size:14px;color:var(--muted);line-height:1.7}
+#hint{position:fixed;z-index:3;bottom:calc(18px + var(--safe-bottom));left:16px;right:16px;margin:0 auto;width:fit-content;max-width:calc(100% - 32px);padding:9px 15px;border-radius:20px;background:#090b16d9;border:1px solid var(--line);text-align:center;font-size:12px;color:var(--muted);pointer-events:none}
+#audio-status{position:fixed;z-index:11;top:calc(66px + var(--safe-top));right:16px;max-width:calc(100% - 32px);padding:8px 12px;border-radius:12px;background:var(--panel);color:var(--muted);font-size:12px;margin:0}
+#chapter{position:fixed;inset:0;margin:auto;width:min(92vw,640px);max-height:calc(100dvh - 32px - var(--safe-top) - var(--safe-bottom));overflow:auto;overscroll-behavior:contain;background:linear-gradient(155deg,#1b192b,#10111e 65%);color:var(--ink);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,5vw,36px);box-shadow:0 18px 70px #0008;scrollbar-width:thin;scrollbar-color:#6a617b transparent}
+#chapter::backdrop{background:#03040bc9}
+#chapter[open]{animation:chapter-in .35s ease-out both}
+#chapter-close{position:sticky;top:0;float:right;z-index:1;min-width:44px;padding:0;background:#222237}
+#chapter-number{margin:6px 48px 10px 0}
+#chapter-title{font:400 clamp(29px,6vw,44px)/1.15 Georgia,serif;margin:0 42px 10px 0;overflow-wrap:anywhere}
+#chapter-subtitle{font-size:15px;color:var(--muted);font-style:italic;margin:0 0 22px}
+#chapter-photo{display:block;width:100%;max-height:44dvh;object-fit:contain;background:#080912;border-radius:14px;margin:0 0 24px}
+#chapter-text{white-space:pre-line;line-height:1.85;font-size:clamp(16px,3.8vw,18px);overflow-wrap:anywhere}
+#chapter-reference{margin:26px 0 0;padding:18px 0 0;border-top:1px solid #e9c98c45;color:var(--gold);font:italic 16px/1.7 Georgia,serif;white-space:pre-line}
+@keyframes chapter-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){#chapter{width:calc(100% - 24px);border-radius:18px;padding:20px}#chapter-photo{max-height:38dvh}button,.control{padding-inline:12px}#hint{font-size:11px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Revisão visual: nomes discretos, sem caixas sobre os astros. */
+button.astro-label{position:fixed;z-index:2;transform:translate(-50%,-50%);min-height:24px;padding:3px 6px;font-size:10px;font-weight:400;letter-spacing:.04em;background:transparent;border:0;color:#e5e7f2;white-space:nowrap;text-shadow:0 1px 4px #000,0 0 5px #000;box-shadow:none}
+@media(hover:hover){button.astro-label:hover{background:transparent;color:#fff}}
+
+/* Capítulos — livro celeste. Sem efeitos WebGL adicionais. */
+#chapter{--accent:#e9c98c;--wash:#242032;width:min(94vw,760px);max-height:calc(100dvh - 32px - var(--safe-top) - var(--safe-bottom));padding:clamp(24px,5vw,64px);border:1px solid color-mix(in srgb,var(--accent) 32%,transparent);border-radius:12px;background:radial-gradient(ellipse at 50% 0%,var(--wash),transparent 48%),linear-gradient(160deg,#10121f,#090b14 80%);box-shadow:0 24px 100px #000b,inset 0 0 0 5px #ffffff05;scrollbar-color:#726a7b transparent;}
+#chapter[data-astro=plutao]{--accent:#d4bcae;--wash:#29212b}
+#chapter[data-astro=netuno]{--accent:#9bbdff;--wash:#172745}
+#chapter[data-astro=urano]{--accent:#a9e2df;--wash:#163136}
+#chapter[data-astro=saturno]{--accent:#e5c58c;--wash:#34291d}
+#chapter[data-astro=jupiter]{--accent:#e6b6a0;--wash:#36251f}
+#chapter[data-astro=marte]{--accent:#efae9a;--wash:#382020}
+#chapter[data-astro=terra]{--accent:#a9caff;--wash:#172d42}
+#chapter[data-astro=lua]{--accent:#d8dbe9;--wash:#292b3b}
+#chapter[data-astro=venus]{--accent:#edc1d3;--wash:#382333}
+#chapter[data-astro=mercurio]{--accent:#d4c5b7;--wash:#29282d}
+#chapter[data-astro=sol]{--accent:#ffdb9c;--wash:#49301c}
+#chapter::backdrop{background:#03040ac7}
+#chapter[open]{animation:book-reveal .55s cubic-bezier(.2,.75,.2,1) both}
+@keyframes book-reveal{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+#chapter-close{top:0;float:right;background:#10131f;border-color:#ffffff30;color:var(--ink);margin:0 0 0 -44px}
+.chapter-ornament,.chapter-end{text-align:center;color:var(--accent);font:24px Georgia,serif;letter-spacing:.2em}
+.chapter-ornament{margin:8px 0 18px}
+#chapter-number{text-align:center;color:var(--accent);margin:0 0 14px;font-size:10px;letter-spacing:.25em}
+#chapter-title{text-align:center;margin:0 0 12px;font:400 clamp(32px,7vw,52px)/1.12 Georgia,serif;color:#fff5e8;text-wrap:balance}
+#chapter-subtitle{text-align:center;margin:0 auto 30px;max-width:38ch;color:#c8c2d2;font:italic 17px/1.55 Georgia,serif}
+#chapter-subtitle:empty{display:none}
+.chapter-portrait{margin:26px auto 34px;padding:7px;width:fit-content;max-width:100%;border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);background:#ffffff05;box-shadow:0 12px 35px #0006}
+#chapter-photo{width:auto;max-width:100%;height:auto;max-height:min(54dvh,490px);object-fit:contain;border-radius:2px;margin:0;background:transparent}
+#chapter-text{max-width:56ch;margin:0 auto;color:#eee8e4;font:400 clamp(18px,3.8vw,21px)/1.85 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere}
+#chapter-reference{max-width:56ch;margin:34px auto 0;padding:24px 12px 0;text-align:center;border-top:1px solid color-mix(in srgb,var(--accent) 36%,transparent);color:var(--accent);font:italic 16px/1.8 Georgia,serif}
+.chapter-end{margin:32px 0 4px;font-size:18px}
+@media(max-width:480px){#chapter{width:calc(100% - 20px);padding:22px 20px 30px;max-height:calc(100dvh - 20px - var(--safe-top) - var(--safe-bottom))}#chapter-title{font-size:34px}#chapter-photo{max-height:46dvh}#chapter-text{font-size:18px;line-height:1.75}}
+
+.jornada-painel{position:fixed;z-index:5;top:calc(65px + env(safe-area-inset-top));left:12px;max-width:min(310px,calc(100vw - 24px));color:#e8d5b4;background:#090b16ed;border:1px solid #b99a654d;border-radius:14px;font:12px/1.5 system-ui,sans-serif;box-shadow:0 6px 24px #0005;}
+.jornada-painel[hidden]{display:none!important}.jornada-painel summary{padding:9px 13px;cursor:pointer}.jornada-lista{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:10px 13px 13px;border-top:1px solid #b99a6533}.jornada-lista .feito{color:#9bc8ac}.jornada-lista .pendente{color:#f2d8a6}.jornada-lista p{grid-column:1/-1;margin:5px 0 0;color:#e8d5b4;overflow-wrap:anywhere}
+
+/* Depoimentos aprovados — seção literária, sem alterar a navegação. */
+#chapter-text .chapter-voices{margin:28px 0;padding:20px 0 0;border-top:1px solid color-mix(in srgb,var(--accent) 32%,transparent);white-space:normal}
+#chapter-text .chapter-voices h3{margin:0 0 18px;text-align:center;font:600 15px/1.5 system-ui,sans-serif;color:var(--accent)}
+#chapter-text .chapter-voice{margin:0;padding:0 0 18px;text-align:center}
+#chapter-text .chapter-voice+.chapter-voice{border-top:1px solid color-mix(in srgb,var(--accent) 24%,transparent);padding-top:18px}
+#chapter-text .chapter-voice:last-child{padding-bottom:0}
+#chapter-text .chapter-voice blockquote{margin:0;color:#eee8e4;font-style:italic;font-size:.94em;white-space:pre-wrap}
+#chapter-text .chapter-voice figcaption{margin:10px 0 0;color:#c8c2d2;font:12px/1.5 system-ui,sans-serif}
+#chapter-text .chapter-prose-end{border-top:1px solid color-mix(in srgb,var(--accent) 32%,transparent);padding-top:22px;margin-top:22px}
+
+/* Carregamento real: cobre a interface até a primeira renderização. */
+#loading{z-index:30;pointer-events:auto;background:radial-gradient(ellipse at 50% 40%,#1a1730 0%,#080a15 46%,#050711 78%);}
+.loading-card{width:min(82vw,400px);margin:auto}
+.loading-eyebrow{font-size:10px;letter-spacing:.24em;color:var(--gold);font-weight:600;margin:22px 0 8px}
+.loading-dedication{font:italic 16px/1.6 Georgia,serif;color:#c4bbd4;margin:14px 0 28px}
+.loading-orbit{position:relative;width:76px;height:76px;margin:0 auto;border:1px solid #e9c98c40;border-radius:50%;display:grid;place-items:center;box-shadow:0 0 30px #bda2ff12}
+.loading-orbit span{font-size:28px;color:#e9c98c;text-shadow:0 0 14px #e9c98c80}
+.loading-orbit::after{content:'';position:absolute;inset:-1px;border-radius:50%;border:1px solid transparent;border-top-color:#e9c98c;border-right-color:#e9c98c80;animation:loading-orbit 2s linear infinite}
+@keyframes loading-orbit{to{transform:rotate(360deg)}}
+#loading-progress{display:block;width:100%;height:5px;border:0;border-radius:99px;overflow:hidden;background:#292637;appearance:none;accent-color:#e9c98c}
+#loading-progress::-webkit-progress-bar{background:#292637;border-radius:99px}
+#loading-progress::-webkit-progress-value{background:linear-gradient(90deg,#a98ad0,#e9c98c);border-radius:99px}
+#loading-progress::-moz-progress-bar{background:#e9c98c;border-radius:99px}
+#loading-status{min-height:2.8em;margin:12px 0;font-size:13px}
+#overview-button{position:fixed;z-index:20;pointer-events:auto;touch-action:manipulation;bottom:calc(65px + var(--safe-bottom));right:max(16px,env(safe-area-inset-right,0px))}
+@media(max-width:760px),(pointer:coarse){
+ #overview-button{top:calc(65px + var(--safe-top));bottom:auto;right:max(12px,env(safe-area-inset-right,0px));font-size:12px;min-height:40px;padding:8px 12px}
+ .jornada-painel{max-width:calc(100vw - 145px)}
+ .jornada-painel[open] .jornada-lista{position:absolute;top:calc(100% + 6px);left:0;width:min(310px,calc(100vw - 24px));background:#090b16f5;border:1px solid #b99a654d;border-radius:14px;box-shadow:0 6px 24px #0005}
+ #audio-status{top:calc(115px + var(--safe-top))}
+}
+
+/* Revisita: somente dentro do painel expandido de Memórias. */
+.jornada-lista #revisit-button{grid-column:1/-1;justify-self:stretch;min-height:44px;margin-top:5px;padding:8px 12px;font-size:12px;letter-spacing:.01em;color:#e8d5b4;background:#10111edb;border-color:#b99a654d;touch-action:manipulation}
+.jornada-painel:not([open]) #revisit-button{display:none!important}

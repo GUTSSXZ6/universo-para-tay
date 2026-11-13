@@ -1,0 +1,222 @@
+[
+  {
+    "id": "plutao",
+    "numero": 1,
+    "astro": "Plutão",
+    "titulo": "Antes de nós",
+    "subtitulo": "Plutão — Onde nossa história ainda não existia.",
+    "texto": "Antes de você, nossa história era sem forma e vazia.\n\nÉramos dois mundos distantes, seguindo nossas próprias órbitas, vivendo nossas próprias vidas, sem sequer imaginar a existência um do outro.\n\nNão havia conversas, abraços, apelidos carinhosos ou promessas. Havia apenas dois caminhos que ainda não tinham se cruzado.\n\nEu não conhecia seus cachos, seu sorriso, sua inteligência, nem esse seu jeito tão particular de cuidar de mim.\n\nE você ainda não imaginava que, um dia, aquele desconhecido construiria um universo inteiro para você.\n\nMas toda história tem um princípio. E a nossa estava prestes a começar.",
+    "foto": null,
+    "musica": null,
+    "referencia": "Gênesis 1:2",
+    "versiculo": "“A terra, porém, estava sem forma e vazia.”",
+    "status": "texto_aprovado",
+    "rotulo": "CAPÍTULO I"
+  },
+  {
+    "id": "netuno",
+    "numero": 2,
+    "astro": "Netuno",
+    "titulo": "O acaso",
+    "subtitulo": "Netuno — Quando nossos caminhos se cruzaram.",
+    "texto": "Entre tantas pessoas, tantos caminhos e tantas possibilidades, nossos mundos finalmente se encontraram.\n\nNão houve grandes acontecimentos, declarações ou promessas. Apenas um amigo em comum, algumas conversas e duas pessoas que não imaginavam o que viria depois.\n\nLembro-me de achar você bonita, engraçada e divertida. Naquele momento, eu ainda não conhecia nem uma pequena parte do universo que existia em você.\n\nPara você, eu era apenas um colega de trabalho. E, para mim, você era alguém cuja companhia começava a tornar aqueles dias mais agradáveis.\n\nNão sabíamos onde nossos caminhos nos levariam. Mas hoje agradeço a Deus por aquele encontro tão simples, que se tornaria tão especial.",
+    "foto": "assets/fotos/foto_netuno.jpg",
+    "musica": null,
+    "referencia": "Provérbios 16:9",
+    "versiculo": "“O coração do homem considera o seu caminho, mas o Senhor lhe dirige os passos.”",
+    "status": "texto_aprovado",
+    "rotulo": "CAPÍTULO II"
+  },
+  {
+    "id": "urano",
+    "numero": 3,
+    "astro": "Urano",
+    "titulo": "Uma amizade comum",
+    "subtitulo": "Urano — Quando sua companhia começou a fazer diferença.",
+    "texto": "Antes de te chamar de amor, eu te chamava de amiga.\n\nÉramos apenas dois colegas de trabalho que compartilhavam algumas conversas, risadas e momentos durante o jantar. Nada extraordinário, nada planejado.\n\nEntre brincadeiras, cafés e conversas no refeitório, fui conhecendo um pouco mais desse seu jeito engraçado e divertido.\n\nNaquela época, eu não precisava de grandes motivos para gostar da sua companhia. Bastava conversar com você para tornar a rotina um pouco mais agradável.\n\nMal sabia eu que aqueles momentos tão comuns se tornariam lembranças tão especiais.\n\nHoje, agradeço a Deus por nossa história ter começado assim: sem pressa, sem expectativas, simplesmente com uma amizade.",
+    "foto": "assets/fotos/foto_urano.jpg",
+    "musica": null,
+    "referencia": "Provérbios 17:17",
+    "versiculo": "“Em todo o tempo ama o amigo, e na angústia nasce o irmão.”",
+    "status": "texto_aprovado",
+    "rotulo": "CAPÍTULO III",
+    "depoimentos": [
+      {
+        "texto": "“Começamos bem. Primeiro nos conhecemos e fomos bons amigos. Basicamente, nossa relação como amigos caminhou direitinho.”",
+        "credito": "Suas palavras — 13/11/2026"
+      }
+    ]
+  },
+  {
+    "id": "saturno",
+    "numero": 4,
+    "astro": "Saturno",
+    "titulo": "Quando nossas órbitas não coincidiam",
+    "subtitulo": "Saturno — Cada coisa em seu devido tempo.",
+    "texto": "Durante algum tempo, nossas órbitas deixaram de coincidir.\n\nNão houve despedidas, desentendimentos ou palavras que precisassem ser perdoadas. Apenas horários diferentes e uma rotina que já não nos permitia compartilhar tantos momentos.\n\nAqueles jantares, as brincadeiras e as conversas se tornaram menos frequentes. Cada um continuou seguindo sua própria órbita.\n\nMas nossa história não havia terminado. Na verdade, ela mal havia começado.\n\nSem que precisássemos planejar, nossos caminhos voltaram a se cruzar. E aquela companhia que antes fazia parte de alguns momentos da minha rotina começaria a fazer parte dos meus dias.\n\nHoje, olhando para trás, percebo que não havia necessidade de apressar nada. Cada momento teve seu próprio tempo, e sou grato a Deus por ter vivido cada um deles.",
+    "foto": null,
+    "musica": null,
+    "referencia": "Eclesiastes 3:1",
+    "versiculo": "“Tudo tem o seu tempo determinado, e há tempo para todo propósito debaixo do céu.”",
+    "status": "texto_aprovado",
+    "rotulo": "CAPÍTULO IV"
+  },
+  {
+    "id": "jupiter",
+    "numero": 5,
+    "astro": "Júpiter",
+    "titulo": "Caminhos que se cruzam",
+    "subtitulo": "Júpiter — Quando conversar com você se tornou parte dos meus dias.",
+    "texto": "É curioso pensar que tudo começou com um assunto tão importante: Deus.\n\nPedi seu número com a intenção de conversar sobre igreja, sem imaginar quantas outras conversas nasceriam daquele pequeno gesto.\n\nFalamos sobre tantas coisas. Sobre nossos dias, nossos pensamentos, nossas brincadeiras e até aquelas pequenas aleatoriedades que tornavam nossas conversas tão especiais.\n\nAos poucos, você deixou de ser alguém que eu encontrava apenas no trabalho e passou a ser alguém com quem eu desejava conversar todos os dias.\n\nE, entre tantas palavras trocadas, comecei a descobrir que sua beleza ia muito além daquilo que meus olhos podiam enxergar.\n\nO que começou com uma conversa sobre Deus tornou-se uma oportunidade de conhecer um pouco mais de você. E por isso sou grato a Ele.",
+    "foto": "assets/fotos/foto_jupiter.jpg",
+    "musica": null,
+    "referencia": "Colossenses 4:6",
+    "versiculo": "“A vossa palavra seja sempre agradável, temperada com sal.”",
+    "status": "texto_aprovado",
+    "rotulo": "CAPÍTULO V",
+    "depoimentos": [
+      {
+        "texto": "“Eu quase não tava conversando com ninguém mais, sabe? Respondi mensagem só quando tinha necessidade, como sempre. E aí, de repente, você começou a mandar mensagem todos os dias.”",
+        "credito": "Seu áudio — 11/11/2026"
+      },
+      {
+        "texto": "“Gosto de como posso conversar aleatoriedades com você, como posso ouvir você falar sobre as coisas que você faz, e como você é inteligente!!”",
+        "credito": "Sua mensagem — 13/11/2026"
+      }
+    ]
+  },
+  {
+    "id": "marte",
+    "numero": 6,
+    "astro": "Marte",
+    "titulo": "Algo começou a mudar",
+    "subtitulo": "Marte — Quando o coração começou a falar.",
+    "texto": "Não sei dizer exatamente quando comecei a gostar de você. Não houve um instante específico, mas uma coleção de pequenos momentos.\n\nSeu sorriso começou a chamar mais a minha atenção. Sua presença começou a fazer falta. E encontrar você passou a ser uma das partes mais esperadas dos meus dias.\n\nLembro-me daquele dia em que coloquei meu braço perto de você e você o segurou. Um gesto tão simples, mas que significou tanto para mim.\n\nDepois vieram os abraços, você deitada no meu ombro e aquela vontade de permanecer um pouco mais ao seu lado.\n\nO que eu não sabia era que, enquanto descobria meus sentimentos, você também começava a enxergar algo diferente em mim.\n\nDois corações que, silenciosamente, começavam a se aproximar.",
+    "foto": null,
+    "musica": null,
+    "referencia": "Provérbios 4:23",
+    "versiculo": "“Sobre tudo o que se deve guardar, guarda o teu coração, porque dele procedem as fontes da vida.”",
+    "status": "texto_aprovado",
+    "rotulo": "CAPÍTULO VI",
+    "depoimentos": [
+      {
+        "texto": "“Mas toda vez que era, tipo assim, cê era muito fofo, muito, muito, muito não sei, muito fofo.”",
+        "credito": "Seu áudio — 11/11/2026"
+      },
+      {
+        "texto": "“Aí tá, passou uns dias, depois eu troquei, coloquei seu nome com coraçãozinho, pronto.”",
+        "credito": "Seu áudio — 11/11/2026"
+      }
+    ],
+    "texto_final": "Enquanto eu tentava entender o que estava acontecendo comigo, meu nome já havia ganhado um pequeno coração no seu celular."
+  },
+  {
+    "id": "terra",
+    "numero": 7,
+    "astro": "Terra",
+    "titulo": "Nosso mundo",
+    "subtitulo": "Terra — A noite que se tornou uma eternidade na minha memória.",
+    "texto": "Entre todos os dias que já vivi, existe um que ganhou um lugar especial no meu coração: 8 de novembro de 2026.\n\nNaquela noite, tive a oportunidade de conhecer um pouco mais do seu mundo. Fui à sua igreja, conheci pessoas importantes para você e, depois, saímos juntos.\n\nEu estava ansioso para te ver. Queria aproveitar cada instante ao seu lado, sem imaginar exatamente como aquela noite terminaria.\n\nE então aconteceu. Você me beijou.\n\nMeu primeiro beijo foi com você. E, entre todas as pessoas deste mundo, fico feliz por ter sido justamente você.\n\nTalvez, para o universo, aquela tenha sido apenas mais uma noite. Mas, para mim, foi uma noite que jamais será apenas mais uma.",
+    "foto": "assets/fotos/foto_terra.jpg",
+    "musica": "assets/musicas/musica_terra.mp3",
+    "referencia": "Cânticos 2:10",
+    "versiculo": "“Levanta-te, amiga minha, formosa minha, e vem.”",
+    "status": "texto_aprovado",
+    "rotulo": "CAPÍTULO VII · 08/11/2026",
+    "depoimentos": [
+      {
+        "texto": "“Tinha dois pensamentos em minha cabeça: quero beijar Gustavo, e não devo beijar Gustavo.”",
+        "credito": "Sua mensagem — 08/11/2026, às 23h37"
+      },
+      {
+        "texto": "“Ela tava curiosa pra saber como era. Ficou imaginando como seria. Ficou nervosa. Perdeu a vergonha na cara e beijou vc kkkkk.”\n\n“Ela amou. Mas é tímida pra admitir.”",
+        "credito": "Suas palavras — 11/11/2026"
+      }
+    ],
+    "texto_final": "E pensar que, algum tempo antes, éramos apenas dois colegas que conversavam durante o jantar.\n\nHoje, entre bilhões de pessoas e incontáveis estrelas, agradeço a Deus pela oportunidade de compartilhar um pedacinho deste mundo com você."
+  },
+  {
+    "id": "lua",
+    "numero": 8,
+    "astro": "Lua",
+    "titulo": "Só nós dois",
+    "subtitulo": "Lua — Os pequenos detalhes do nosso universo.",
+    "texto": "Nem todas as coisas que amo em você podem ser explicadas em grandes poemas.\n\nAlgumas estão na maneira como você me abraça, nos seus beijinhos, no jeito como repousa a cabeça sobre meu ombro e até nas vezes em que me lembra de beber água.\n\nEstão nos nossos apelidos carinhosos, nas brincadeiras que só nós entendemos e na maneira como você consegue me fazer sorrir sem precisar fazer muito.\n\nAmo seus cachinhos, seu sorriso, sua inteligência e esse seu jeito tão particular de demonstrar carinho.\n\nSão detalhes que talvez passem despercebidos aos olhos do mundo, mas que jamais passam despercebidos aos meus.",
+    "foto": "assets/fotos/foto_lua.jpg",
+    "musica": null,
+    "referencia": "Lucas 2:19",
+    "versiculo": "“Mas Maria guardava todas estas coisas, conferindo-as em seu coração.”",
+    "status": "texto_aprovado",
+    "rotulo": "CAPÍTULO VIII · MEMÓRIA ESPECIAL",
+    "depoimentos": [
+      {
+        "texto": "“Esse negócio de me chamar de amor me quebra demàaaaàais”",
+        "credito": "08/11/2026"
+      },
+      {
+        "texto": "“Mas eu amei ser abraçada por você 💗”",
+        "credito": "08/11/2026"
+      }
+    ],
+    "texto_final": "Assim como a Lua acompanha a Terra silenciosamente, existem pequenos gestos seus que me acompanham mesmo quando você não está perto.\n\nE são essas pequenas coisas que desejo continuar guardando no meu coração."
+  },
+  {
+    "id": "venus",
+    "numero": 9,
+    "astro": "Vênus",
+    "titulo": "A beleza do carinho",
+    "subtitulo": "Vênus — A beleza que meus olhos não conseguem explicar.",
+    "texto": "Quando te conheci, achei você bonita. Hoje, percebo que aquela era apenas a primeira de tantas belezas que eu ainda descobriria em você.\n\nExiste beleza no seu sorriso, nos seus cachos, no seu olhar e até nas expressões engraçadas que você faz.\n\nMas existe uma beleza ainda maior na maneira como você cuida de mim, como se preocupa com meus sentimentos e como demonstra seu carinho.\n\nAdmiro sua inteligência, sua dedicação, sua fé e a mulher que você é, mesmo quando você mesma não consegue enxergar tudo aquilo que admiro.\n\nQuero que você saiba que não desejo apenas receber seu carinho. Desejo também cuidar de você, respeitar seu tempo, compreender seus sentimentos e retribuir cada pequeno gesto de amor.",
+    "foto": "assets/fotos/foto_venus.jpg",
+    "musica": null,
+    "referencia": "Romanos 12:10",
+    "versiculo": "“Amai-vos cordialmente uns aos outros com amor fraternal, preferindo-vos em honra uns aos outros.”",
+    "status": "texto_aprovado",
+    "rotulo": "CAPÍTULO IX",
+    "depoimentos": [
+      {
+        "texto": "“Gosto de como me abraça, mesmo que me deixa com vergonha. Gosto de como é carinhoso, afetuoso e compreensível.”",
+        "credito": "Sua mensagem — 13/11/2026"
+      }
+    ],
+    "texto_final": "Se um dia você me perguntar qual é a parte mais bonita de você, talvez eu nunca consiga escolher apenas uma.\n\nPorque não foi somente pela sua beleza que me apaixonei. Foi por descobrir quem você é."
+  },
+  {
+    "id": "mercurio",
+    "numero": 10,
+    "astro": "Mercúrio",
+    "titulo": "Cada vez mais perto",
+    "subtitulo": "Mercúrio — O amor que descobrimos pelo caminho.",
+    "texto": "Quem diria que aquela menina com quem eu conversava durante o jantar se tornaria a mulher para quem hoje escrevo poemas e construo universos?\n\nQuanto mais te conheço, mais encontro motivos para amar você. E quanto mais encontro esses motivos, mais percebo que ainda existe tanto de você para descobrir.\n\nNão conheço todos os seus medos, todos os seus sonhos ou todas as histórias que fizeram de você a mulher que é hoje. Mas desejo conhecê-los, respeitando seu tempo e seu coração.\n\nNão quero que meu amor seja demonstrado apenas por palavras bonitas, poemas ou presentes. Quero demonstrá-lo através das minhas atitudes, da minha paciência e do meu cuidado com você.\n\nNão sei exatamente o que o amanhã nos reserva. Mas desejo que Deus esteja presente em cada passo que dermos.",
+    "foto": null,
+    "musica": null,
+    "referencia": "1 Coríntios 13:4",
+    "versiculo": "“O amor é paciente, o amor é bondoso.”",
+    "status": "texto_aprovado",
+    "rotulo": "CAPÍTULO X",
+    "depoimentos": [
+      {
+        "texto": "“Eu gosto de vc o suficiente pra me preocupar com seus sentimentos.”",
+        "credito": "Sua mensagem — 08/11/2026"
+      },
+      {
+        "texto": "“Com vc é sempre um ótimo começo.”",
+        "credito": "Sua mensagem — 12/11/2026"
+      }
+    ],
+    "texto_final": "E se cada dia ao seu lado é um ótimo começo, que privilégio seria poder continuar começando ao seu lado.\n\nNão quero apressar nossa história. Quero vivê-la.\n\nPorque amar você não é apenas desejar um futuro contigo. É também valorizar o presente que tenho com você."
+  },
+  {
+    "id": "sol",
+    "numero": 11,
+    "astro": "Sol",
+    "titulo": "Haja luz",
+    "subtitulo": "Sol — A inspiração de todo este universo.",
+    "texto": "Você chegou ao centro deste pequeno universo que construí para você.\n\nComeçamos em Plutão, quando nossa história ainda era sem forma e vazia. Atravessamos a distância, a amizade, os desencontros, as conversas, os primeiros sentimentos e aquele beijo que jamais esquecerei.\n\nE agora estamos aqui.\n\nTayane Rayssa Durães dos Santos, entre tantas coisas que poderia construir, escolhi construir um universo para você. Porque, de alguma maneira, um simples poema já não parecia suficiente para expressar tudo aquilo que sinto.\n\nAmo seu sorriso, seus cachinhos, sua inteligência, seu jeito engraçado, seu carinho e a maneira como você cuida de mim. Mas também admiro a mulher que você é diante de Deus.\n\nNão quero ocupar o lugar que pertence a Ele em sua vida. Quero que Deus seja o fundamento daquilo que estamos construindo e que nossos sentimentos nunca nos afastem dEle.\n\nQuero amar você com paciência, respeito, sinceridade e atitudes. Quero continuar descobrindo seus pequenos detalhes, ouvindo suas histórias e compartilhando aqueles momentos simples que se tornam especiais por serem vividos contigo.\n\nEste universo tem um último capítulo, mas nossa história ainda tem tantas páginas em branco.\n\nE, se Deus permitir, quero continuar escrevendo essas páginas ao seu lado.\n\nEu te amo, Tay.\nMais do que ontem e menos do que amanhã.",
+    "foto": "assets/fotos/foto_sol.jpg",
+    "musica": "assets/musicas/musica_sol.mp3",
+    "referencia": "Provérbios 31:30; Gênesis 1:3",
+    "versiculo": "“Enganosa é a graça, e vã, a formosura, mas a mulher que teme ao Senhor, essa será louvada.”\n\n“E disse Deus: Haja luz. E houve luz.”",
+    "status": "texto_recuperado_aprovacao_pendente"
+  }
+]

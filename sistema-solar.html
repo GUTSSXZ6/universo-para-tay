@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050711">
+  <title>Nosso Sistema Solar — Universo para Tayane</title>
+  <link rel="stylesheet" href="css/sistema-solar.css">
+</head>
+<body>
+  <main id="scene" aria-label="Sistema solar tridimensional"></main>
+  <header>
+    <a class="control" href="index.html" aria-label="Voltar ao universo original">← Universo</a>
+    <button id="music-toggle" type="button" aria-pressed="true" disabled>♪ Música</button>
+  </header>
+  <section id="loading" role="status" aria-live="polite">
+    <div class="loading-card">
+      <div class="loading-orbit" aria-hidden="true"><span>✦</span></div>
+      <p class="loading-eyebrow">UM UNIVERSO PARA TAYANE</p><h1>Nosso Sistema Solar</h1>
+      <p class="loading-dedication">Cada estrela guarda um pedacinho da nossa história.</p>
+      <progress id="loading-progress" max="100" value="0" aria-label="Progresso do carregamento"></progress>
+      <p id="loading-status">Preparando nosso sistema solar…</p>
+      <button id="loading-enter" type="button" hidden>Entrar no nosso universo ✧</button>
+      <button id="loading-retry" type="button" hidden>Recarregar</button>
+    </div>
+  </section>
+  <p id="audio-status" role="status" aria-live="polite" hidden></p>
+  <p id="hint" hidden>Arraste para explorar · Toque em um astro para descobrir sua história</p>
+  <dialog id="chapter" aria-labelledby="chapter-title">
+    <button id="chapter-close" type="button" aria-label="Fechar capítulo">✕</button>
+    <div class="chapter-ornament" aria-hidden="true">✦</div>
+    <p id="chapter-number"></p>
+    <h2 id="chapter-title"></h2>
+    <p id="chapter-subtitle"></p>
+    <figure class="chapter-portrait" hidden><img id="chapter-photo" alt="" hidden></figure>
+    <div id="chapter-text"></div>
+    <blockquote id="chapter-reference" hidden></blockquote>
+    <div class="chapter-end" aria-hidden="true">✧</div>
+  </dialog>
+  <audio id="background-audio" preload="none" loop></audio>
+  <audio id="chapter-audio" preload="none" loop></audio>
+  <script>
+    document.getElementById('chapter-close').addEventListener('click',()=>document.getElementById('chapter').close());
+  </script>
+  <script>
+    document.getElementById('loading-retry').addEventListener('click',()=>location.reload());
+    function erroModulo(){document.getElementById('loading-status').textContent='Não foi possível carregar o universo. Confira a conexão e tente novamente.';document.getElementById('loading-retry').hidden=false;}
+  </script>
+  <script type="module" src="js/sistema-solar.js" onerror="erroModulo()"></script>
+</body>
+</html>
